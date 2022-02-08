@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Trivia Game</title>
+        <link rel="shortcut icon" href="#">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id="quiz">
+            <div id="answers-check-line">
+            </div>
+            <form id="myForm" required>
+                <fieldset>
+                    <legend id="question" align="center">Who was the main actor in Superman 2?</legend>
+                    <div id="options">
+                    </div>
+                </fieldset>
+            </form>
+            <div id="button-set1">
+                <span form="myForm" onclick="enterAnswer(event)" class="btn1">Enter Answer</span>
+                <span onclick="nextQuestion(event)" class="btn1">Next Question</span>
+            </div>
+            <div id="response" style="color: green;">Answer has been submitted!!!</div>
+            <div id="button-set2">
+                <span onclick="help(event)" class="btn2">Help</span>
+                <span onclick="restart(event)" class="btn2">Restart</span>
+            </div>
+        </div>
+
+        <div id="result">
+            <h1 id="heading">Your Quiz Result</h1>
+            <h3 id="total">Total Question Answered : </h3>
+            <h3 id="correct" class="text">Total Correct Answered : </h3>
+            <h3 id="wrong" class="text">Total Wrong Answered : </h3>
+            <h3 id="unanswered" class="text">Total Unanswered Question : </h3>
+            <span onclick="restart(event)" class="btn2">Restart</span>
+        </div>
+
+        <div id="help-menu">
+            <ul>
+                <li>Select each option for the given question.</li>
+                <li>After selecting an otion, click on <b>'Enter Answer'</b> to submit the answer for that question.</li>
+                <li>If you forget to click <b>'Enter Answer'</b>, the question will be marked answered.</li>
+                <li>Click<b>'Next Question'</b>, to go to the next question.</li>
+                <li>Click<b>'Restart'</b>, to restart the quiz at any time.</li>
+                <li style="margin-top:20px; color: gray;">Click on <b>'Help'</b>, again to hide the help menu.</li>
+            </ul>
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>

@@ -1,0 +1,67 @@
+body{
+    display: flex;
+    flex-direction: column;
+    background-color: #8cd3ee;
+}
+
+form{
+    width: 50%;
+}
+
+#answers-check-line{
+    display: flex;
+    width: 50%;
+}
+
+legend, fieldset{
+    border: 1px solid gray;
+}
+
+legend{
+    text-align: center;
+    padding: 5px;
+}
+
+.line{
+    margin: 0 1px;
+    width: 50px;
+    height: 10px;
+    background-color: gray;
+    border-radius: 10px;
+}
+
+#button-set1, #button-set2{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn1{
+    background-color: aqua;
+    padding: 1px 3px;
+    margin: 1rem 0;
+    text-align: center;
+    width: 40%;
+    cursor: pointer;
+}
+
+.btn2{
+    background-color: white;
+    padding: 1px 3px;
+    margin: 1rem 0;
+    text-align: center;
+    width: 35%;
+    cursor: pointer;
+}
+
+#heading{
+    color: red;
+}
+
+.correct{
+    color: black;
+}
+
+.hide{
+    display: none;
+}
