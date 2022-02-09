@@ -1,3 +1,9 @@
+/* 
+    Name: Your Name
+
+    Desription: This is the JS file. It contains all the fucntionality of the application
+ */
+
 // this is the object containing all the question and answers
 const questionsOptionsObj = {
     questions: [
@@ -147,60 +153,60 @@ let numberOfQuestions = 10;
 // indicates current question index
 let currentQuestionIndex = 0;
 
-// it will hold the set of questions for current quiz session  
-let questionsForCurrentQuiz = new Set()
+// it will hold the set of questions for current quiz session
+let questionsForCurrentQuiz = new Set();
 
 // it will hold the response or answers given by user
-const enteredAnswers = []
+const enteredAnswers = [];
 
 // getting all the required dom elements
-const answersCheckLine = document.getElementById('answers-check-line')
-const questionBox = document.getElementById('question')
-const answersBox = document.getElementById('options')
-const myForm = document.getElementById('myForm')
-const quiz = document.getElementById('quiz');
-const result = document.getElementById('result');
+const answersCheckLine = document.getElementById("answers-check-line");
+const questionBox = document.getElementById("question");
+const answersBox = document.getElementById("options");
+const myForm = document.getElementById("myForm");
+const quiz = document.getElementById("quiz");
+const result = document.getElementById("result");
 const helpMenu = document.getElementById("help-menu");
 const response = document.getElementById("response");
 
 // this function will save response given by the user for each question
-function enterAnswer(e){
+function enterAnswer(e) {
     e.preventDefault();
-    
-    response.classList.remove('hide')
+
+    response.classList.remove("hide");
 
     const formData = new FormData(myForm);
     let option = formData.get("option");
-    
+
     let questionNum = questionsForCurrentQuiz[currentQuestionIndex];
-    let correctAnswerIndex = questionsOptionsObj.questions[questionNum].correctAnswer
-    let correctAnswer = questionsOptionsObj.questions[questionNum].options[correctAnswerIndex];
+    let correctAnswerIndex =
+        questionsOptionsObj.questions[questionNum].correctAnswer;
+    let correctAnswer =
+        questionsOptionsObj.questions[questionNum].options[correctAnswerIndex];
 
     enteredAnswers.push({
         option,
         correctAnswer,
-        questionNum 
-    })
+        questionNum,
+    });
 }
 
-
-// this function will display the result of the quiz 
-function endQuiz(){
-    quiz.style.display = 'none';
+// this function will display the result of the quiz
+function endQuiz() {
+    quiz.style.display = "none";
     result.style.display = "block";
 
     let totalAnswered = 0;
-    let correctAnswer = 0
-    let wrongAnswer = 0
-    let unanswered = 0
-    let questionNum
-    let answer
+    let correctAnswer = 0;
+    let wrongAnswer = 0;
+    let unanswered = 0;
+    let questionNum;
+    let answer;
 
     const IDs = [
         {
             id: "total",
             color: "black",
-            
         },
         {
             id: "correct",
@@ -214,96 +220,105 @@ function endQuiz(){
             id: "unanswered",
             color: "gray",
         },
-    ]
+    ];
 
     totalAnswered = enteredAnswers.length;
 
-    if(totalAnswered){
+    if (totalAnswered) {
         enteredAnswers.forEach((answer, index) => {
-            if(!answer.option){
-                unanswered++
-            }
-            else if(answer.option === answer.correctAnswer){
+            if (!answer.option) {
+                unanswered++;
+            } else if (answer.option === answer.correctAnswer) {
                 correctAnswer++;
-            }
-            else{
+            } else {
                 wrongAnswer++;
             }
-        })
+        });
 
-        unanswered = numberOfQuestions - (correctAnswer + wrongAnswer + unanswered);
+        unanswered =
+            numberOfQuestions - (correctAnswer + wrongAnswer + unanswered);
     }
-    
-    document.getElementById('total').innerHTML += `<span">${totalAnswered}</span>`
 
-    document.getElementById('correct').innerHTML += `<span style="color:green">${correctAnswer}</span>`
+    document.getElementById(
+        "total"
+    ).innerHTML += `<span">${totalAnswered}</span>`;
 
-    document.getElementById('wrong').innerHTML += `<span style="color:red">${wrongAnswer}</span>`
+    document.getElementById(
+        "correct"
+    ).innerHTML += `<span style="color:green">${correctAnswer}</span>`;
 
-    document.getElementById('unanswered').innerHTML += `<span style="color:gray">${unanswered}</span>`
+    document.getElementById(
+        "wrong"
+    ).innerHTML += `<span style="color:red">${wrongAnswer}</span>`;
+
+    document.getElementById(
+        "unanswered"
+    ).innerHTML += `<span style="color:gray">${unanswered}</span>`;
 }
 
 // this function will take user to the next question
-function nextQuestion(e){
+function nextQuestion(e) {
     e.preventDefault();
     currentQuestionIndex++;
-    if(currentQuestionIndex >= numberOfQuestions){
-        if(currentQuestionIndex === numberOfQuestions){
+    if (currentQuestionIndex >= numberOfQuestions) {
+        if (currentQuestionIndex === numberOfQuestions) {
             answersCheckLine.children[
                 currentQuestionIndex - 1
             ].style.background = "red";
         }
-        endQuiz()
-    }else{
-        response.classList.add('hide')
-        answersCheckLine.children[currentQuestionIndex-1].style.background = "red";
+        endQuiz();
+    } else {
+        response.classList.add("hide");
+        answersCheckLine.children[currentQuestionIndex - 1].style.background =
+            "red";
 
-        redenderQuestionAnswers(currentQuestionIndex)
+        redenderQuestionAnswers(currentQuestionIndex);
     }
 }
 
 /*
 this function create the boxes above the question which will coloured by red if the question is answered, green means the displayed question is the current question and gray means the question to be displayed in future
 */
-function createoptionsCheckLine(){
+function createoptionsCheckLine() {
     let line;
     let element;
 
-    for(let i = 0; i < numberOfQuestions; i++){
-        element = `<div class="line"></div>`
+    for (let i = 0; i < numberOfQuestions; i++) {
+        element = `<div class="line"></div>`;
         line = HTMLdom(element);
         answersCheckLine.append(line);
     }
 }
 
 // this function renders the current question and its options on the screen
-function redenderQuestionAnswers(currentQuestion){
+function redenderQuestionAnswers(currentQuestion) {
     answersCheckLine.children[currentQuestionIndex].style.background = "green";
 
-    let questionIndex = questionsForCurrentQuiz[currentQuestion]
+    let questionIndex = questionsForCurrentQuiz[currentQuestion];
     let question = questionsOptionsObj.questions[questionIndex].question;
     questionBox.innerText = question;
 
-    let numOfOption = questionsOptionsObj.questions[questionIndex].options.length;
+    let numOfOption =
+        questionsOptionsObj.questions[questionIndex].options.length;
     let option;
     let answer;
-    let char = ['A', 'B', 'C', 'D'];
+    let char = ["A", "B", "C", "D"];
 
     answersBox.innerText = "";
 
-    for(let i=0; i<numOfOption; i++){
+    for (let i = 0; i < numOfOption; i++) {
         answer = questionsOptionsObj.questions[questionIndex].options[i];
         option = `<div>
                     <input type="radio" id="option${i}" name="option" value="${answer}">
                     <label for="option${i}">${char[i]}) ${answer}</label>
                   <div>`;
-        option = HTMLdom(option)
+        option = HTMLdom(option);
         answersBox.append(option);
     }
 }
 
 // for each time the quiz is played this function will generate random uniques set of questions
-function getTenRandomUniqueQuestions(){
+function getTenRandomUniqueQuestions() {
     let randomIndex;
     for (let i = 0; i < numberOfQuestions; i++) {
         randomIndex = Math.floor(Math.random() * 17);
@@ -313,40 +328,39 @@ function getTenRandomUniqueQuestions(){
             i--;
         }
     }
-    questionsForCurrentQuiz = Array.from(questionsForCurrentQuiz)
+    questionsForCurrentQuiz = Array.from(questionsForCurrentQuiz);
 }
 
 // this function restarts the quiz
-function restart(e){
-    e.preventDefault()
-    location.reload()
+function restart(e) {
+    e.preventDefault();
+    location.reload();
 }
 
 // this function will display the help menu when clicked
-function help(e){
-    e.preventDefault()
+function help(e) {
+    e.preventDefault();
     let helpMenu = document.getElementById("help-menu");
-    helpMenu.classList.toggle('hide');
+    helpMenu.classList.toggle("hide");
 }
 
 // this is the function which runs when the page is rendered
 window.onload = () => {
     quiz.style.display = "block";
     result.style.display = "none";
-    helpMenu.classList.toggle('hide');
-    response.classList.toggle('hide');
-    
-    createoptionsCheckLine()
+    helpMenu.classList.toggle("hide");
+    response.classList.toggle("hide");
 
-    getTenRandomUniqueQuestions()
+    createoptionsCheckLine();
 
-    redenderQuestionAnswers(currentQuestionIndex)
-}
+    getTenRandomUniqueQuestions();
+
+    redenderQuestionAnswers(currentQuestionIndex);
+};
 
 // this function is used to creat html dom elements
-function HTMLdom(element){
-    let template = document.createElement('template');
+function HTMLdom(element) {
+    let template = document.createElement("template");
     template.innerHTML = element;
     return template.content.firstChild;
 }
-

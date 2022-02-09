@@ -1,3 +1,11 @@
+/* 
+    Name: Your Name
+
+    Desription: This is the CSS file. It contains all the style of the application
+ */
+
+
+
 body{
     display: flex;
     flex-direction: column;
