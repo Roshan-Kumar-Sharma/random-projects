@@ -1,0 +1,33 @@
+#heading{
+    text-align: center;
+}
+
+#form-container, #container{
+    background-color: aqua;
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+}
+
+input, label{
+    margin-bottom: 10px;
+}
+
+input{
+    margin-left: 20px;
+}
+
+#submit{
+    display: flex;
+    justify-content: center;
+}
+
+.heading{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.value{
+    font-weight: 100;
+    color: red;
+}
