@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Home Page</title>
+</head>
+<body>
+    <h1>Home Page</h1>
+
+    <ul>
+        <li><a href="../Portfolio_Project/index.html">Home</a></li>
+        <li><a href="../Portfolio_Project/gallery.html">Gallery</a></li>
+        <li><a href="../Portfolio_Project/aboutme.html">About Me</a></li>
+        <li>Contact Me</li>
+        <li><a href="../Portfolio_Project/mypage.html">My Page</a></li>
+    </ul>
+
+    <h2><span id="spMessage"></span></h2>
+
+    <p>Welcome to my Home Page, please take a moment to look around and read all the information on my portfolio</p>
+
+    <div>Number of time entered: <span id="visitCount">1</span></div>
+
+    <script>
+        let userName
+        let visited
+        const spMessage = document.getElementById("spMessage")
+        const visitCount = document.getElementById("visitCount")
+
+        window.onload = () => {
+            user = JSON.parse(getUser())
+            // console.log(userName)
+            if(!user){
+                user = askUserName()
+                user = {
+                    userName: user,
+                    visited: 1
+                }
+                setUser(user)
+            }
+            else{
+                user.visited++
+                setUser(user)
+            }
+            updateDetailsOnPage(user)
+        }
+
+        function updateDetailsOnPage(){
+            spMessage.innerText = "Welcome " + user.userName
+            visitCount.innerText = user.visited
+        }
+
+        function askUserName(){
+            let userName = prompt("Enter your name")
+            if(!userName)
+                userName = "Unknown"
+            return userName
+        }
+
+        function setUser(user){
+            localStorage.setItem('user', JSON.stringify(user))
+        }
+
+        function getUser(){
+            const user = localStorage.getItem('user')
+            if(!user)
+                return false
+            else
+                return user
+        }
+    </script>
+</body>
+</html>

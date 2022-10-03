@@ -1,0 +1,25 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 1rem 10rem;
+    display: flex;
+    flex-direction: column;
+}
+
+img{
+    width: 100px;
+    height: 100px
+}
+
+header{
+    display: flex;
+    /* flex-direction: row; */
+
+}
+
+header-text{
+    position: absolute;
+    top: 65px;
+}

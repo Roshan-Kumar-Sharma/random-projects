@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Date</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+            integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+        <style>
+            span {
+                font-size: 3rem;
+            }
+            .fa-solid {
+                margin-left: 1rem;
+                cursor: pointer;
+            }
+            #date {
+                font-size: 2.5rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <span>Date: </span>
+            <span id="date"></span>
+            <i id="left" class="fa-solid fa-angle-left fa-3x"></i>
+            <i id="right" class="fa-solid fa-angle-right fa-3x"></i>
+        </div>
+
+        <script>
+            let month, today, year;
+            const currDate = document.querySelector("#date");
+
+            let date = new Date();
+
+            month = parseInt(date.getMonth()) + 1;
+            today = parseInt(date.getDate());
+            year = parseInt(date.getFullYear());
+
+            if (month.toString().length <= 1) month = "0" + month;
+            if (today.toString().length <= 1) today = "0" + today;
+
+            currDate.innerHTML = `${year}-${month}-${today}`;
+
+            document.querySelector("#left").addEventListener("click", () => {
+                console.log("left");
+                date.setDate(date.getDate() - 1);
+                month = parseInt(date.getMonth()) + 1;
+                today = parseInt(date.getDate());
+                year = parseInt(date.getFullYear());
+
+                console.log(month, today, year);
+
+                if (month.toString().length <= 1) month = "0" + month;
+                if (today.toString().length <= 1) today = "0" + today;
+
+                currDate.innerHTML = `${year}-${month}-${today}`;
+            });
+
+            document.querySelector("#right").addEventListener("click", () => {
+                date.setDate(date.getDate() + 1);
+                month = parseInt(date.getMonth()) + 1;
+                today = parseInt(date.getDate());
+                year = parseInt(date.getFullYear());
+
+                console.log(month, today, year);
+
+                if (month.toString().length <= 1) month = "0" + month;
+                if (today.toString().length <= 1) today = "0" + today;
+
+                currDate.innerHTML = `${year}-${month}-${today}`;
+            });
+        </script>
+    </body>
+</html>

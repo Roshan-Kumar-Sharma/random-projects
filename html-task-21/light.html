@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Light</title>
+        <link rel="stylesheet" href="light.css" type="text/css" />
+    </head>
+    <body>
+        <div id="box">
+            <h3 id="message">Click button to turn on/off light</h3>
+            <div id="img-container">
+                <img src="images/light_0.jpg" alt="" id="light_1" />
+                <img src="images/light_0.jpg" alt="" id="light_2" />
+                <img src="images/light_0.jpg" alt="" id="light_3" />
+                <img src="images/light_0.jpg" alt="" id="light_4" />
+                <img src="images/light_0.jpg" alt="" id="light_5" />
+            </div>
+            <div id="btn-container">
+                <button class="btn" id="btn1" onclick="onA()">ON</button>
+                <button class="btn" id="btn2" onclick="onB()">ON</button>
+                <button class="btn" id="btn3" onclick="onC()">ON</button>
+                <button class="btn" id="btn4" onclick="onD()">ON</button>
+                <button class="btn" id="btn5" onclick="onE()">ON</button>
+            </div>
+            <button class="btn" id="off" onclick="oFF()">OFF</button>
+        </div>
+
+        <script src="light.js"></script>
+    </body>
+</html>

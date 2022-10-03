@@ -1,0 +1,86 @@
+<DOCTYPE html>
+<head>
+    <style>
+        .emoji{
+            margin-right: 1px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <input id="box" type="text">
+    <button id="btn">Choose Emoji</button>
+    <div id="fill" style="margin-top: 10px; width: 300px; display: none;"></div>
+    <div id="list" style="margin-top: 10px; width: 300px; ">
+        <span class="emoji">&#128540;</span>
+        <span class="emoji">&#128513;</span>
+        <span class="emoji">&#128514;</span>
+        <span class="emoji">&#128515;</span>
+        <span class="emoji">&#128516;</span>
+        <span class="emoji">&#128517;</span>
+        <span class="emoji">&#128518;</span>
+        <span class="emoji">&#128519;</span>
+        <span class="emoji">&#128520;</span>
+        <span class="emoji">&#128521;</span>
+        <span class="emoji">&#128522;</span>
+        <span class="emoji">&#128523;</span>
+        <span class="emoji">&#128524;</span>
+        <span class="emoji">&#128525;</span>
+        <span class="emoji">&#128526;</span>
+        <span class="emoji">&#128527;</span>
+        <span class="emoji">&#128528;</span>
+        <span class="emoji">&#128529;</span>
+        <span class="emoji">&#128530;</span>
+        <span class="emoji">&#128531;</span>
+        <span class="emoji">&#128532;</span>
+        <span class="emoji">&#128533;</span>
+        <span class="emoji">&#128534;</span>
+        <span class="emoji">&#128535;</span>
+        <span class="emoji">&#128536;</span>
+        <span class="emoji">&#128537;</span>
+        <span class="emoji">&#128538;</span>
+        <span class="emoji">&#128539;</span>
+        <span class="emoji">&#128540;</span>
+        <span class="emoji">&#128541;</span>
+        <span class="emoji">&#128542;</span>
+        <span class="emoji">&#128543;</span>
+        <span class="emoji">&#128544;</span>
+        <span class="emoji">&#128545;</span>
+        <span class="emoji">&#128546;</span>
+        <span class="emoji">&#128547;</span>
+        <span class="emoji">&#128548;</span>
+        <span class="emoji">&#128549;</span>
+        <span class="emoji">&#128550;</span>
+        <span class="emoji">&#128551;</span>
+        <span class="emoji">&#128552;</span>
+        <span class="emoji">&#128553;</span>
+    </div>
+    <script>
+        const btn = document.getElementById("btn")
+        const list = document.getElementById("list")
+        const fill = document.getElementById("fill")
+        const box = document.getElementById("box")
+        const emojis = document.getElementsByClassName("emoji")
+
+        // box.addEventListener("")
+
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            list.style.display = "block"
+        })
+
+        for(let i=0; i<emojis.length; i++){
+                emojis[i].addEventListener("click", (e) => {
+                e.preventDefault()
+                list.style.display = "none"
+                const value = e.innerText;
+                for(let j=0; j<10; j++){
+                    const elem = `<span class="emoji">${value}</span>`
+                    fill.append(elem)
+                }
+                fill.style.display = "block"
+            })
+        }
+    </script>
+</body>
+</html>

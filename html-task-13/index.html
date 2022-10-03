@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Web Page</title>
+        <style>
+            #titleBlock {
+                background-color: green;
+                color: white;
+                width: 800px;
+                height: 50px;
+            }
+
+            .backgroundColor {
+                background-color: coral;
+            }
+
+            label,
+            input {
+                margin: 0.5rem 0;
+            }
+
+            #radio-btn{
+                border: 1px solid gray;
+                padding: 0.5rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="titleBlock">
+            <h1 class="">
+                Welcome to internet & Multimedia Application Develpment
+            </h1>
+        </div>
+        <button onclick="changeBackground()">
+            Swap Background between Green and Coral
+        </button>
+
+        <br />
+
+        <label for="name">Name: </label>
+        <input id="name" type="text" value="Peter Pan" />
+
+        <br/>
+
+        <label>Choose your free time-slots?</label>
+
+        <br/><br/>
+
+        <div id="radio-btn">
+            <input type="radio" id="monday" name="weekday" value="Monday" />
+            <label for="monday">Monday</label>
+    
+            <input type="radio" id="tuesday" name="weekday" value="Tuesday" />
+            <label for="tuesday">Tuesday</label>
+    
+            <input type="radio" id="wednesday" name="weekday" value="Wednesday" />
+            <label for="wednesday">Wednesday</label>
+    
+            <input type="radio" id="thursday" name="weekday" value="Thursday" />
+            <label for="thursday">Thursday</label>
+    
+            <input type="radio" id="friday" name="weekday" value="Friday" />
+            <label for="friday">Friday</label>
+        </div>
+
+
+        <script>
+            let toggle = true;
+
+            function changeBackground() {
+                const heading = document.getElementById("titleBlock");
+                if (toggle) {
+                    heading.style.backgroundColor = "coral";
+                } else {
+                    heading.style.backgroundColor = "green";
+                }
+                toggle = !toggle;
+            }
+
+            document.querySelectorAll("input[type=radio]").forEach(elem => {
+                elem.onclick = () => {
+                    const name = document.getElementById("name").value
+                    alert(`
+                        Hello, ${name}
+                        Meet you at this ${elem.value}!
+                    `)
+                }
+            })
+
+        </script>
+    </body>
+</html>
